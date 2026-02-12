@@ -39,7 +39,7 @@ func PauseCmd() *cobra.Command {
 			}
 
 			err = db.StopEntry(running.ID)
-			if(err != nil) {
+			if err != nil {
 				ui.PrintError(ui.EmojiError, fmt.Sprintf("%v", err))
 				os.Exit(1)
 			}

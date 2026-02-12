@@ -6,17 +6,17 @@ import (
 )
 
 type TimeEntry struct {
-	ID int64
-	ProjectName string
-	StartTime time.Time
-	EndTime *time.Time
-	Description string
-	HourlyRate *float64
+	ID            int64
+	ProjectName   string
+	StartTime     time.Time
+	EndTime       *time.Time
+	Description   string
+	HourlyRate    *float64
 	MilestoneName *string
 }
 
 func (t *TimeEntry) Duration() time.Duration {
-	if( t.EndTime == nil) {
+	if t.EndTime == nil {
 		return time.Since(t.StartTime)
 	}
 

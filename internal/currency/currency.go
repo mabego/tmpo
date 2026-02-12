@@ -16,14 +16,14 @@ var currencySymbols = map[string]string{
 	"ARS": "AR$", // Argentine Peso
 
 	// Europe
-	"EUR": "€",   // Euro
-	"GBP": "£",   // British Pound Sterling
-	"CHF": "Fr",  // Swiss Franc
-	"SEK": "kr",  // Swedish Krona
-	"NOK": "kr",  // Norwegian Krone
-	"DKK": "kr",  // Danish Krone
-	"PLN": "zł",  // Polish Zloty
-	"CZK": "Kč",  // Czech Koruna
+	"EUR": "€",  // Euro
+	"GBP": "£",  // British Pound Sterling
+	"CHF": "Fr", // Swiss Franc
+	"SEK": "kr", // Swedish Krona
+	"NOK": "kr", // Norwegian Krone
+	"DKK": "kr", // Danish Krone
+	"PLN": "zł", // Polish Zloty
+	"CZK": "Kč", // Czech Koruna
 
 	// Asia
 	"JPY": "¥",   // Japanese Yen

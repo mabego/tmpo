@@ -162,7 +162,7 @@ func TestMigrateTimestampsToUTC_LocalToUTC(t *testing.T) {
 	assert.NoError(t, err)
 
 	localTime := time.Date(2026, 1, 8, 15, 30, 0, 0, est) // 3:30 PM EST
-	expectedUTC := localTime.UTC()                          // Should convert to 8:30 PM UTC
+	expectedUTC := localTime.UTC()                        // Should convert to 8:30 PM UTC
 
 	// Insert time entry with local timezone
 	_, err = db.db.Exec(

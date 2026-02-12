@@ -10,10 +10,10 @@ import (
 
 // IMPORTANT: When adding new fields to this struct, also update configTemplate below.
 type Config struct {
-	ProjectName string `yaml:"project_name"`
-	HourlyRate float64 `yaml:"hourly_rate,omitempty"`
-	Description string `yaml:"description,omitempty"`
-	ExportPath  string `yaml:"export_path,omitempty"`
+	ProjectName string  `yaml:"project_name"`
+	HourlyRate  float64 `yaml:"hourly_rate,omitempty"`
+	Description string  `yaml:"description,omitempty"`
+	ExportPath  string  `yaml:"export_path,omitempty"`
 }
 
 // IMPORTANT: When adding new fields to Config, update this template.
@@ -63,7 +63,7 @@ func (c *Config) Save(path string) error {
 func Create(projectName string, hourlyRate float64) error {
 	config := &Config{
 		ProjectName: projectName,
-		HourlyRate: hourlyRate,
+		HourlyRate:  hourlyRate,
 	}
 
 	tmporc := filepath.Join(".", ".tmporc")
