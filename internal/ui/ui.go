@@ -25,9 +25,9 @@ const (
 	FormatUnderline = "\033[4m"
 
 	// Specific reset codes (don't reset colors)
-	ResetBoldDim    = "\033[22m" // Reset bold and dim
-	ResetItalic     = "\033[23m" // Reset italic
-	ResetUnderline  = "\033[24m" // Reset underline
+	ResetBoldDim   = "\033[22m" // Reset bold and dim
+	ResetItalic    = "\033[23m" // Reset italic
+	ResetUnderline = "\033[24m" // Reset underline
 )
 
 // Emoji Constants

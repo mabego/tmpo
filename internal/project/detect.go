@@ -31,7 +31,6 @@ func DetectProject() (string, error) {
 	return filepath.Base(cwd), nil
 }
 
-
 func DetectConfiguredProject() (string, error) {
 	return DetectConfiguredProjectWithOverride("")
 }

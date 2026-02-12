@@ -46,12 +46,12 @@ Track time effortlessly with automatic project detection and simple commands.`,
 	cmd.AddCommand(tracking.PauseCmd())
 	cmd.AddCommand(tracking.ResumeCmd())
 	cmd.AddCommand(tracking.StatusCmd())
-	
+
 	// History
 	cmd.AddCommand(history.LogCmd())
 	cmd.AddCommand(history.StatsCmd())
 	cmd.AddCommand(history.ExportCmd())
-	
+
 	// Entries
 	cmd.AddCommand(entries.EditCmd())
 	cmd.AddCommand(entries.DeleteCmd())

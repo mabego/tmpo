@@ -10,9 +10,9 @@ import (
 )
 
 const (
-	githubAPIURL    = "https://api.github.com/repos/DylanDevelops/tmpo/releases/latest"
-	checkTimeout    = 3 * time.Second
-	connectTimeout  = 2 * time.Second
+	githubAPIURL   = "https://api.github.com/repos/DylanDevelops/tmpo/releases/latest"
+	checkTimeout   = 3 * time.Second
+	connectTimeout = 2 * time.Second
 )
 
 type ReleaseInfo struct {

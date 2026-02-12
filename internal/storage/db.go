@@ -306,7 +306,7 @@ func (d *Database) StopEntry(id int64) error {
 		id,
 	)
 
-	if(err != nil) {
+	if err != nil {
 		return fmt.Errorf("failed to stop entry: %w", err)
 	}
 

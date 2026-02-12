@@ -21,9 +21,9 @@ var releaseVersionRegex = regexp.MustCompile(`^v?\d+\.\d+\.\d+(-[\w.]+)?$`)
 
 func VersionCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "version",
-		Short: "Show version information",
-		Long:  "Display the current version information including date and release URL.",
+		Use:    "version",
+		Short:  "Show version information",
+		Long:   "Display the current version information including date and release URL.",
 		Hidden: true,
 		Run: func(cmd *cobra.Command, args []string) {
 			DisplayVersionWithUpdateCheck()

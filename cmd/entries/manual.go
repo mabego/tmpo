@@ -62,7 +62,7 @@ func ManualCmd() *cobra.Command {
 			}
 
 			projectPrompt := promptui.Prompt{
-				Label: projectLabel,
+				Label:     projectLabel,
 				AllowEdit: true,
 			}
 
@@ -290,7 +290,6 @@ func validateTime(input string) error {
 	return fmt.Errorf("invalid time format, use 12-hour (e.g., 9:30 AM) or 24-hour (e.g., 14:30)")
 }
 
-
 func validateEndDateTime(startDate, startTime, endDate, endTime, dateLayout string) error {
 	start, err := parseDateTime(startDate, startTime, dateLayout)
 	if err != nil {
@@ -313,15 +312,15 @@ func parseDateTime(date, timeStr, dateLayout string) (time.Time, error) {
 	normalizedTime := normalizeAMPM(timeStr)
 	dateTime := fmt.Sprintf("%s %s", date, normalizedTime)
 
-	if dt, err := time.ParseInLocation(dateLayout + " 3:04 PM", dateTime, settings.GetDisplayTimezone()); err == nil {
+	if dt, err := time.ParseInLocation(dateLayout+" 3:04 PM", dateTime, settings.GetDisplayTimezone()); err == nil {
 		return dt, nil
 	}
 
-	if dt, err := time.ParseInLocation(dateLayout + " 03:04 PM", dateTime, settings.GetDisplayTimezone()); err == nil {
+	if dt, err := time.ParseInLocation(dateLayout+" 03:04 PM", dateTime, settings.GetDisplayTimezone()); err == nil {
 		return dt, nil
 	}
 
-	return time.ParseInLocation(dateLayout + " 15:04", dateTime, settings.GetDisplayTimezone())
+	return time.ParseInLocation(dateLayout+" 15:04", dateTime, settings.GetDisplayTimezone())
 }
 
 func normalizeAMPM(input string) string {

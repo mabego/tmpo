@@ -13,10 +13,10 @@ import (
 
 func ConfigCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "config",
+		Use:     "config",
 		Aliases: []string{"settings", "preferences"},
-		Short: "Configure global tmpo settings",
-		Long:  `Set up global configuration for tmpo including currency, date/time format, and timezone.`,
+		Short:   "Configure global tmpo settings",
+		Long:    `Set up global configuration for tmpo including currency, date/time format, and timezone.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			ui.NewlineAbove()
 

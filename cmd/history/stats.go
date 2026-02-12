@@ -6,8 +6,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/DylanDevelops/tmpo/internal/settings"
 	"github.com/DylanDevelops/tmpo/internal/currency"
+	"github.com/DylanDevelops/tmpo/internal/settings"
 	"github.com/DylanDevelops/tmpo/internal/storage"
 	"github.com/DylanDevelops/tmpo/internal/ui"
 	"github.com/spf13/cobra"
@@ -15,7 +15,7 @@ import (
 
 var (
 	statsToday bool
-	statsWeek bool
+	statsWeek  bool
 )
 
 func StatsCmd() *cobra.Command {

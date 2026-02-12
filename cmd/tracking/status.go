@@ -53,7 +53,7 @@ func StatusCmd() *cobra.Command {
 			}
 
 			if running.MilestoneName != nil && *running.MilestoneName != "" {
-				ui.PrintInfo(4, ui.Bold("Milestone"), *running.MilestoneName);
+				ui.PrintInfo(4, ui.Bold("Milestone"), *running.MilestoneName)
 			}
 
 			ui.NewlineBelow()
