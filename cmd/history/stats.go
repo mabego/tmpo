@@ -127,7 +127,12 @@ func ShowPeriodStats(entries []*storage.TimeEntry, periodName string) {
 
 	for _, project := range projects {
 		duration := projectStats[project]
-		percentage := (duration.Seconds() / totalDuration.Seconds()) * 100
+		percentage := 0.0
+
+		if totalDuration > 0 {
+			percentage = (duration.Seconds() / totalDuration.Seconds()) * 100
+		}
+
 		fmt.Printf("        %s  %s  (%.1f%%)\n", ui.Bold(fmt.Sprintf("%-20s", project)), ui.FormatDuration(duration), percentage)
 
 		if earnings, ok := projectEarnings[project]; ok && earnings > 0 {
