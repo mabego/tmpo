@@ -82,15 +82,29 @@ func ManualCmd() *cobra.Command {
 				os.Exit(1)
 			}
 
+			todayDate := time.Now().Format(dateFormatLayout)
+
 			startDatePrompt := promptui.Prompt{
-				Label:    fmt.Sprintf("Start date (%s)", dateFormatDisplay),
-				Validate: func(input string) error { return validateDate(input, dateFormatLayout, dateFormatDisplay) },
+				Label:     fmt.Sprintf("Start date (%s): (%s)", dateFormatDisplay, todayDate),
+				AllowEdit: true,
+				Validate: func(input string) error {
+					if strings.TrimSpace(input) == "" {
+						return nil
+					}
+					
+					return validateDate(input, dateFormatLayout, dateFormatDisplay)
+				},
 			}
 
 			startDateInput, err := startDatePrompt.Run()
 			if err != nil {
 				ui.PrintError(ui.EmojiError, fmt.Sprintf("%v", err))
 				os.Exit(1)
+			}
+
+			startDateInput = strings.TrimSpace(startDateInput)
+			if startDateInput == "" {
+				startDateInput = todayDate
 			}
 
 			startTimePrompt := promptui.Prompt{
