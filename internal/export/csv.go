@@ -40,9 +40,6 @@ func ToCSV(entries []*storage.TimeEntry, filename string, inUtc bool) error {
 
 		duration := entry.Duration().Hours()
 
-		settings.ToDisplayTime(entry.StartTime)
-		entry.StartTime.UTC()
-
 		record := []string{
 			entry.ProjectName,
 			toCorrectCsvTimestamp(entry.StartTime, inUtc),
