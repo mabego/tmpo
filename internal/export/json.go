@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"time"
 
+	"github.com/DylanDevelops/tmpo/internal/settings"
 	"github.com/DylanDevelops/tmpo/internal/storage"
 )
 
@@ -17,19 +19,19 @@ type ExportEntry struct {
 	Milestone   string  `json:"milestone,omitempty"`
 }
 
-func ToJson(entries []*storage.TimeEntry, filename string) error {
+func ToJson(entries []*storage.TimeEntry, filename string, inUtc bool) error {
 	var exportEntries []ExportEntry
 
 	for _, entry := range entries {
 		export := ExportEntry{
 			Project:     entry.ProjectName,
-			StartTime:   entry.StartTime.Format("2006-01-02T15:04:05Z07:00"),
+			StartTime:   toCorrectJsonTimestamp(entry.StartTime, inUtc),
 			Duration:    entry.Duration().Hours(),
 			Description: entry.Description,
 		}
 
 		if entry.EndTime != nil {
-			export.EndTime = entry.EndTime.Format("2006-01-02T15:04:05Z07:00")
+			export.EndTime = toCorrectJsonTimestamp(*entry.EndTime, inUtc)
 		}
 
 		if entry.MilestoneName != nil {
@@ -54,4 +56,16 @@ func ToJson(entries []*storage.TimeEntry, filename string) error {
 	}
 
 	return nil
+}
+
+func toCorrectJsonTimestamp(timestamp time.Time, inUtc bool) string {
+	formattedTimestamp := ""
+
+	if inUtc {
+		formattedTimestamp += timestamp.UTC().Format("2006-01-02T15:04:05Z07:00")
+	} else {
+		formattedTimestamp += settings.ToDisplayTime(timestamp).Format("2006-01-02T15:04:05Z07:00")
+	}
+
+	return formattedTimestamp
 }
