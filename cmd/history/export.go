@@ -21,6 +21,7 @@ var (
 	exportMilestone string
 	exportToday     bool
 	exportWeek      bool
+	exportUtc       bool
 )
 
 func ExportCmd() *cobra.Command {
@@ -141,9 +142,9 @@ func ExportCmd() *cobra.Command {
 
 			switch exportFormat {
 			case "csv":
-				err = export.ToCSV(entries, filename)
+				err = export.ToCSV(entries, filename, exportUtc)
 			case "json":
-				err = export.ToJson(entries, filename)
+				err = export.ToJson(entries, filename, exportUtc)
 			default:
 				ui.PrintError(ui.EmojiError, fmt.Sprintf("Unknown format '%s'. Use 'csv' or 'json'", exportFormat))
 				os.Exit(1)
@@ -166,6 +167,7 @@ func ExportCmd() *cobra.Command {
 	cmd.Flags().StringVarP(&exportMilestone, "milestone", "m", "", "Filter by milestone")
 	cmd.Flags().BoolVarP(&exportToday, "today", "t", false, "Export today's entries")
 	cmd.Flags().BoolVarP(&exportWeek, "week", "w", false, "Export this week's entries")
+	cmd.Flags().BoolVar(&exportUtc, "utc", false, "Export timestamps in UTC rather than local timezone")
 
 	return cmd
 }

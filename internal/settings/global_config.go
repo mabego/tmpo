@@ -107,13 +107,13 @@ func GetDisplayTimezone() *time.Location {
 	return loc
 }
 
-// toDisplayTime converts a UTC time to the user's display timezone
-func toDisplayTime(t time.Time) time.Time {
+// ToDisplayTime converts a UTC time to the user's display timezone
+func ToDisplayTime(t time.Time) time.Time {
 	return t.In(GetDisplayTimezone())
 }
 
 func FormatTime(t time.Time) string {
-	t = toDisplayTime(t)
+	t = ToDisplayTime(t)
 
 	cfg, err := LoadGlobalConfig()
 	if err != nil || cfg.TimeFormat == "" || cfg.TimeFormat == "Keep current" {
@@ -128,7 +128,7 @@ func FormatTime(t time.Time) string {
 }
 
 func FormatTimePadded(t time.Time) string {
-	t = toDisplayTime(t)
+	t = ToDisplayTime(t)
 
 	cfg, err := LoadGlobalConfig()
 	if err != nil || cfg.TimeFormat == "" || cfg.TimeFormat == "Keep current" {
@@ -143,7 +143,7 @@ func FormatTimePadded(t time.Time) string {
 }
 
 func FormatDate(t time.Time) string {
-	t = toDisplayTime(t)
+	t = ToDisplayTime(t)
 
 	cfg, err := LoadGlobalConfig()
 	if err != nil || cfg.DateFormat == "" || cfg.DateFormat == "Keep current" {
@@ -163,7 +163,7 @@ func FormatDate(t time.Time) string {
 }
 
 func FormatDateDashed(t time.Time) string {
-	t = toDisplayTime(t)
+	t = ToDisplayTime(t)
 
 	cfg, err := LoadGlobalConfig()
 	if err != nil || cfg.DateFormat == "" || cfg.DateFormat == "Keep current" {
@@ -191,13 +191,13 @@ func FormatDateTimeDashed(t time.Time) string {
 }
 
 func FormatDateLong(t time.Time) string {
-	t = toDisplayTime(t)
+	t = ToDisplayTime(t)
 
 	return t.Format("Mon, Jan 2, 2006")
 }
 
 func FormatDateTimeLong(t time.Time) string {
-	t = toDisplayTime(t)
+	t = ToDisplayTime(t)
 
 	cfg, err := LoadGlobalConfig()
 	if err != nil || cfg.TimeFormat == "" || cfg.TimeFormat == "Keep current" {
