@@ -37,7 +37,7 @@ func TestToCSV(t *testing.T) {
 		}
 
 		filename := filepath.Join(tmpDir, "test.csv")
-		err := ToCSV(entries, filename)
+		err := ToCSV(entries, filename, true)
 		assert.NoError(t, err)
 
 		// Verify file exists
@@ -82,7 +82,7 @@ func TestToCSV(t *testing.T) {
 		}
 
 		filename := filepath.Join(tmpDir, "running.csv")
-		err := ToCSV(entries, filename)
+		err := ToCSV(entries, filename, false)
 		assert.NoError(t, err)
 
 		// Read CSV
@@ -102,7 +102,7 @@ func TestToCSV(t *testing.T) {
 		entries := []*storage.TimeEntry{}
 
 		filename := filepath.Join(tmpDir, "empty.csv")
-		err := ToCSV(entries, filename)
+		err := ToCSV(entries, filename, false)
 		assert.NoError(t, err)
 
 		// Read CSV
@@ -133,7 +133,7 @@ func TestToCSV(t *testing.T) {
 		}
 
 		filename := filepath.Join(tmpDir, "no-desc.csv")
-		err := ToCSV(entries, filename)
+		err := ToCSV(entries, filename, false)
 		assert.NoError(t, err)
 
 		// Read CSV
@@ -175,7 +175,7 @@ func TestToJson(t *testing.T) {
 		}
 
 		filename := filepath.Join(tmpDir, "test.json")
-		err := ToJson(entries, filename)
+		err := ToJson(entries, filename, true)
 		assert.NoError(t, err)
 
 		// Verify file exists
@@ -217,7 +217,7 @@ func TestToJson(t *testing.T) {
 		}
 
 		filename := filepath.Join(tmpDir, "running.json")
-		err := ToJson(entries, filename)
+		err := ToJson(entries, filename, false)
 		assert.NoError(t, err)
 
 		// Read JSON
@@ -238,7 +238,7 @@ func TestToJson(t *testing.T) {
 		entries := []*storage.TimeEntry{}
 
 		filename := filepath.Join(tmpDir, "empty.json")
-		err := ToJson(entries, filename)
+		err := ToJson(entries, filename, false)
 		assert.NoError(t, err)
 
 		// Read JSON
@@ -270,7 +270,7 @@ func TestToJson(t *testing.T) {
 		}
 
 		filename := filepath.Join(tmpDir, "no-desc.json")
-		err := ToJson(entries, filename)
+		err := ToJson(entries, filename, false)
 		assert.NoError(t, err)
 
 		// Read raw JSON to verify omission
