@@ -63,8 +63,9 @@ func LogCmd() *cobra.Command {
 					weekday = 7 // sunday
 				}
 
-				start := now.AddDate(0, 0, -weekday+1).Truncate(24 * time.Hour).UTC()
-				end := start.AddDate(0, 0, 7)
+				startDay := now.AddDate(0, 0, -weekday+1)
+				start := time.Date(startDay.Year(), startDay.Month(), startDay.Day(), 0, 0, 0, 0, time.Local)
+				end := time.Now()
 				entries, err = db.GetEntriesByDateRange(start, end)
 			} else if logProject != "" {
 				entries, err = db.GetEntriesByProject(logProject)
