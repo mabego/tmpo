@@ -7,7 +7,37 @@ This guide will walk you through installing tmpo on macOS.
 - macOS 11 (Big Sur) or later
 - For building from source: Go 1.25 or later
 
-## Method 1: Download Pre-built Binary (Recommended)
+## Method 1: Homebrew (Recommended)
+
+The easiest way to install tmpo on macOS is via [Homebrew](https://brew.sh/).
+
+```bash
+brew tap DylanDevelops/tmpo
+brew install tmpo
+```
+
+### Verify Installation
+
+```bash
+tmpo --version
+```
+
+### Updating
+
+```bash
+brew upgrade tmpo
+```
+
+### Uninstalling via Homebrew
+
+```bash
+brew uninstall tmpo
+
+# Optionally, delete your tmpo data
+rm -rf ~/.tmpo
+```
+
+## Method 2: Download Pre-built Binary
 
 ### Step 1: Download the Binary
 
@@ -61,14 +91,6 @@ tmpo --version
 ```
 
 You should see the tmpo version information.
-
-## Method 2: Homebrew (Coming Soon)
-
-Homebrew support is on the way! Once available, you'll be able to install with:
-
-```bash
-brew install tmpo
-```
 
 ## Method 3: Build from Source
 
@@ -206,7 +228,10 @@ tmpo stats
 To uninstall tmpo:
 
 ```bash
-# Remove the binary
+# If installed via Homebrew
+brew uninstall tmpo
+
+# If installed manually
 sudo rm /usr/local/bin/tmpo
 
 # Optionally, delete your tmpo data

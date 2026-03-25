@@ -22,11 +22,9 @@
 
 ## Installation
 
-### Download Pre-built Binaries (Recommended)
+### Installation Guides
 
-Download the latest release for your platform from the [releases page](https://github.com/DylanDevelops/tmpo/releases).
-
-For detailed installation instructions for your platform:
+See the installation guide for your platform:
 
 - [macOS Installation Guide](docs/installation/macos_installation.md)
 - [Linux Installation Guide](docs/installation/linux_installation.md)
