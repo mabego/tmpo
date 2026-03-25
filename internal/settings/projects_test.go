@@ -11,7 +11,7 @@ import (
 func TestLoadProjects(t *testing.T) {
 	tmpDir := t.TempDir()
 
-	// Set temporary home directory for cross-platform compatibility
+	t.Setenv("TMPO_DEV", "0")
 	t.Setenv("HOME", tmpDir)        // Unix/macOS
 	t.Setenv("USERPROFILE", tmpDir) // Windows
 
@@ -96,6 +96,7 @@ func TestLoadProjects(t *testing.T) {
 func TestProjectsRegistrySave(t *testing.T) {
 	tmpDir := t.TempDir()
 
+	t.Setenv("TMPO_DEV", "0")
 	t.Setenv("HOME", tmpDir)        // Unix/macOS
 	t.Setenv("USERPROFILE", tmpDir) // Windows
 
@@ -430,6 +431,7 @@ func TestExists(t *testing.T) {
 func TestGetProjectsPath(t *testing.T) {
 	tmpDir := t.TempDir()
 
+	t.Setenv("TMPO_DEV", "0")
 	t.Setenv("HOME", tmpDir)        // Unix/macOS
 	t.Setenv("USERPROFILE", tmpDir) // Windows
 
