@@ -139,4 +139,4 @@ brews:
     install: |
       bin.install "tmpo"
     test: |
-      system "#{bin}/tmpo", "--version"
+      system bin/"tmpo", "--version"
