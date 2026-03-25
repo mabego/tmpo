@@ -79,7 +79,6 @@ snapshot:
   version_template: "{{ incpatch .Version }}-next"
 
 changelog:
-  use: github-native
   sort: asc
   groups:
     - title: ✨ Features
@@ -108,7 +107,6 @@ changelog:
   filters:
     exclude:
       - '^test:'
-      - '^ci:'
       - Merge pull request
       - Merge remote-tracking branch
       - Merge branch
