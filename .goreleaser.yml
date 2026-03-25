@@ -118,7 +118,7 @@ release:
   github:
     owner: DylanDevelops
     name: tmpo
-  draft: true
+  draft: false
   prerelease: auto
   name_template: "tmpo {{.Version}}"
 
