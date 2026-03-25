@@ -118,7 +118,7 @@ release:
   github:
     owner: DylanDevelops
     name: tmpo
-  draft: true # Turn to false when first release is ready
+  draft: true
   prerelease: auto
   name_template: "tmpo {{.Version}}"
 
@@ -127,14 +127,14 @@ brews:
   - name: tmpo
     repository:
       owner: DylanDevelops
-      name: tmpo
+      name: homebrew-tmpo
     commit_author:
       name: goreleaserbot
       email: bot@goreleaser.com
     homepage: "https://github.com/DylanDevelops/tmpo"
     description: "Minimal CLI time tracker for developers"
     license: "MIT"
-    skip_upload: true # Turn to false when first release is ready
+    skip_upload: false
     install: |
       bin.install "tmpo"
     test: |
