@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # Maintain Go dependencies (go.mod / go.sum)
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+
+  # Maintain GitHub Actions in your workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "ci"
