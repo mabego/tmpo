@@ -97,7 +97,7 @@ release:
   name_template: "tmpo {{.Version}}"
 
 # Homebrew
-homebrew_casks:
+brews:
   - name: tmpo
     repository:
       owner: DylanDevelops
@@ -109,7 +109,7 @@ homebrew_casks:
     homepage: "https://github.com/DylanDevelops/tmpo"
     description: "Minimal CLI time tracker for developers"
     license: "MIT"
-    completions:
-      bash: "completions/tmpo.bash"
-      zsh: "completions/tmpo.zsh"
-      fish: "completions/tmpo.fish"
+    extra_install: |
+      bash_completion.install "completions/tmpo.bash" => "tmpo"
+      zsh_completion.install "completions/tmpo.zsh" => "_tmpo"
+      fish_completion.install "completions/tmpo.fish"
