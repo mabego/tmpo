@@ -1,5 +1,7 @@
 [changelog]
 body = """
+## What's Changed
+
 {% for group, commits in commits | group_by(attribute="group") %}
 ### {{ group | striptags | trim }}
 {% for commit in commits -%}
@@ -7,12 +9,19 @@ body = """
 {% endfor %}
 
 {% endfor %}
-{% set new_contributors = github.contributors | filter(attribute="is_first_time", value=true) %}
+{%- set new_contributors = github.contributors | filter(attribute="is_first_time", value=true) %}
 {% if new_contributors | length > 0 %}
-### 🌟 New Contributors
+## New Contributors
 {% for contributor in new_contributors -%}
 - [@{{ contributor.username }}](https://github.com/{{ contributor.username }}) made their first contribution!
 {% endfor %}
+{% endif %}
+
+
+{% if previous.version %}
+**Full Changelog**: https://github.com/DylanDevelops/tmpo/compare/{{ previous.version }}...{{ version }}
+{% else %}
+**Full Changelog**: https://github.com/DylanDevelops/tmpo/commits/{{ version }}
 {% endif %}
 """
 trim = true
