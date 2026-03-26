@@ -3,6 +3,10 @@ version: 2
 before:
   hooks:
     - go mod tidy
+    - mkdir -p completions
+    - sh -c 'go run main.go completion bash > completions/tmpo.bash'
+    - sh -c 'go run main.go completion zsh > completions/tmpo.zsh'
+    - sh -c 'go run main.go completion fish > completions/tmpo.fish'
 
 builds:
   # macOS (both Intel and Apple Silicon)
@@ -44,7 +48,7 @@ builds:
 
 archives:
   - id: windows-zip
-    builds: [windows]
+    ids: [windows]
     name_template: >-
       {{ .ProjectName }}_
       {{- .Version }}_
@@ -52,13 +56,16 @@ archives:
       {{- if eq .Arch "amd64" }}x86_64
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
-    format: zip
+    formats: [zip]
     files:
       - README.md
       - LICENSE
+      - completions/tmpo.bash
+      - completions/tmpo.zsh
+      - completions/tmpo.fish
 
   - id: unix-targz
-    builds: [macos, linux]
+    ids: [macos, linux]
     name_template: >-
       {{ .ProjectName }}_
       {{- .Version }}_
@@ -66,10 +73,13 @@ archives:
       {{- if eq .Arch "amd64" }}x86_64
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
-    format: tar.gz
+    formats: [tar.gz]
     files:
       - README.md
       - LICENSE
+      - completions/tmpo.bash
+      - completions/tmpo.zsh
+      - completions/tmpo.fish
 
 checksum:
   name_template: 'checksums.txt'
@@ -87,7 +97,7 @@ release:
   name_template: "tmpo {{.Version}}"
 
 # Homebrew
-brews:
+homebrew_casks:
   - name: tmpo
     repository:
       owner: DylanDevelops
@@ -99,9 +109,7 @@ brews:
     homepage: "https://github.com/DylanDevelops/tmpo"
     description: "Minimal CLI time tracker for developers"
     license: "MIT"
-    skip_upload: false
-    install: |
-      bin.install "tmpo"
-      generate_completions_from_executable(bin/"tmpo", "completion")
-    test: |
-      system bin/"tmpo", "--version"
+    completions:
+      bash: "completions/tmpo.bash"
+      zsh: "completions/tmpo.zsh"
+      fish: "completions/tmpo.fish"
