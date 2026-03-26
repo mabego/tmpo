@@ -5,7 +5,9 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
 ### {{ group | striptags | trim }}
 {% for commit in commits -%}
-- {% if commit.breaking %}[breaking] {% endif %}{{ commit.message | split(pat="\\n") | first | upper_first }}{% if commit.remote.username %} by [@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }}){% endif %}
+- {% if commit.breaking %}[breaking] {% endif %}{{ commit.message | split(pat="\\n") | first | upper_first }}\
+{% if commit.remote.username %} by [@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }}){% endif %}\
+{% if commit.remote.pr_number %} in [#{{ commit.remote.pr_number }}](https://github.com/DylanDevelops/tmpo/pull/{{ commit.remote.pr_number }}){% endif %}
 {% endfor %}
 
 {% endfor %}
@@ -28,15 +30,15 @@ trim = true
 
 [git]
 conventional_commits = true
-filter_unconventional = false
+filter_unconventional = true
+filter_commits = true
 commit_parsers = [
-  { message = "^feat", group = "✨ Features" },
-  { message = "^fix", group = "🐛 Bug Fixes" },
-  { message = "^perf", group = "🚀 Performance Improvements" },
-  { message = "^refactor", group = "🔨 Refactoring" },
-  { message = "^docs?", group = "📚 Documentation" },
-  { message = "^(build|ci)", group = "🔧 Build & Dependencies" },
-  { message = "^chore", group = "🧹 Maintenance" },
+  { message = "^feat", group = "<!-- 0 -->✨ Features" },
+  { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "^perf", group = "<!-- 2 -->🚀 Performance Improvements" },
+  { message = "^refactor", group = "<!-- 3 -->🛠️ Refactoring" },
+  { message = "^docs?", group = "<!-- 4 -->📚 Documentation" },
+  { message = "^(build|ci)", group = "<!-- 5 -->🔧 Build & Dependencies" },
+  { message = "^chore", group = "<!-- 6 -->🧹 Maintenance" },
   { message = "^Merge ", skip = true },
-  { message = ".*", group = "📦 Other Changes" },
 ]
