@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"time"
+
+	"github.com/DylanDevelops/tmpo/internal/shell"
 )
 
 // ANSI Color Constants
@@ -141,7 +143,9 @@ func NewlineAbove() {
 }
 
 func NewlineBelow() {
-	fmt.Println()
+	if !shell.IsLegacyWindowsCMD() {
+		fmt.Println()
+	}
 }
 
 func FormatDuration(d time.Duration) string {
