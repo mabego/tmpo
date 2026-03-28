@@ -34,14 +34,15 @@ func VersionCmd() *cobra.Command {
 }
 
 func DisplayVersionWithUpdateCheck() {
-	fmt.Print(GetVersionOutput())
+	fmt.Println(GetVersionOutput())
 	checkForUpdates()
+	ui.NewlineBelow()
 }
 
 func GetVersionOutput() string {
 	versionLine := fmt.Sprintf("tmpo version %s %s", ui.Success(Version), ui.Muted(GetFormattedDate(Date)))
 	changelogLine := ui.Muted(GetChangelogUrl(Version))
-	return fmt.Sprintf("\n%s\n%s\n\n", versionLine, changelogLine)
+	return fmt.Sprintf("\n%s\n%s", versionLine, changelogLine)
 }
 
 func GetFormattedDate(inputDate string) string {
@@ -76,8 +77,8 @@ func checkForUpdates() {
 	}
 
 	if updateInfo.HasUpdate {
-		fmt.Printf("%s %s\n", ui.Info("New Update Available:"), ui.Bold(strings.TrimPrefix(updateInfo.LatestVersion, "v")))
-		fmt.Printf("%s\n\n", ui.Muted(updateInfo.UpdateURL))
+		fmt.Printf("\n%s %s\n", ui.Info("New Update Available:"), ui.Bold(strings.TrimPrefix(updateInfo.LatestVersion, "v")))
+		fmt.Printf("%s", ui.Muted(updateInfo.UpdateURL))
 	}
 }
 
